@@ -1,2 +1,13 @@
 ---
 # tasks file for ansible_galaxy_role_ubuntu-jdk
+
+- name: "jdk | install"
+  become: yes
+  ignore_errors: "{{ ansible_check_mode }}"
+  apt:
+    pkg: 
+      - openjdk-8-jdk
+      - openjdk-11-jdk
+      - openjdk-16-jdk
+    state: present
+    update_cache: yes
